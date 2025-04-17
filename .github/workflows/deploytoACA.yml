@@ -1,0 +1,19 @@
+name: Deploy
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main 
+
+jobs: 
+  build_Push-acr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2 
+      - name: Docker build
+        run: |
+          docker build -t sharnithacontainerregnginx.azurecr.io/frontend:${{ github.run_id }} --file Dockerfile.prod .
+          docker login sharnithacontainerregnginx.azurecr.io -u sharnithacontainerregnginx -p ${{secrets.pat}}
+          docker push sharnithacontainerregnginx.azurecr.io/frontend:${{ github.run_id }}
+      
