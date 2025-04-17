@@ -13,7 +13,8 @@ jobs:
         uses: actions/checkout@v2 
       - name: Docker build
         run: |
-          docker build -t sharnithacontainerregnginx.azurecr.io/frontend:${{ github.run_id }} --file Dockerfile.prod .
+          docker build -t sharnithacontainerregnginx.azurecr.io/frontend:${{ github.run_id }} .
           docker login sharnithacontainerregnginx.azurecr.io -u sharnithacontainerregnginx -p ${{secrets.pat}}
           docker push sharnithacontainerregnginx.azurecr.io/frontend:${{ github.run_id }}
+# docker build -t sharnithacontainerregnginx.azurecr.io/frontend:${{ github.run_id }} --file Dockerfile.prod .
       
