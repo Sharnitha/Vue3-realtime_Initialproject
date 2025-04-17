@@ -1,4 +1,4 @@
-FROM node:18.0
+FROM node:20.0
 # set the working directory
 WORKDIR /app
 # Copy the working directory in the container
