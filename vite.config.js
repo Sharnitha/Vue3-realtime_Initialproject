@@ -15,4 +15,8 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
+  server: {
+    host: true,   // Binds to 0.0.0.0 to allow external access
+    port: 80      // Runs Vite dev server on port 80
+  }
 })
